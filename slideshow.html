@@ -1,0 +1,47 @@
+<html>
+<head>
+<script language = "JavaScript">
+
+var number = 0;
+var picList = [ "images/slide1.jpg", "images/slide2.jpg", "images/slide3.jpg", "images/slide4.jpg", "images/slide5.jpg"];
+var clipList = [ "sounds/chandler.mp3", "sounds/janice.mp3", "sounds/joey.mp3", "sounds/monica.mp3", "sounds/ross.mp3"];
+function startShow()
+{
+var answer;
+	var pic = document.getElementById ("picFrame")
+	var clip = document.getElementById("myAudio")
+
+	pic.src = picList[number]
+	clip.src = clipList[number];
+	clip.play(); 
+
+pic.width = "300";
+    
+number = number + 1;
+if(number == 5)
+    {
+number = 0;
+    }
+
+}
+
+
+</script>
+
+</head>
+<body>
+<center> 
+<h1> Image Object </h1>
+
+<img id="picFrame" src="images/slide0.png"/>
+<audio id="myAudio"> </audio>
+
+
+<br/>
+<br/>
+
+<input type="button" value="Click Me" onClick="startShow()">
+
+</center>
+</body>
+</html>
