@@ -1,0 +1,109 @@
+<html> 
+<head> 
+<script language="JavaScript">
+
+/*************** Algorithm ******************
+1. Program all variables, testing to make sure the website **still** works after all of them are defined
+2. Create functions, displayQuestion will be first, then update score, and then checkanswer
+3. displayQuestion will loop every time the button is clicked, and it's job is to change the question
+4. The user will submit their answer in a text box, and their answer will be stored in a new array. Once they focus out, the update score function will run
+5. The update score function will utilize the checkAnswer function, in order to check if the answer is right or not. 
+6. Once the true or false is returned into updatescore, the score will be updated and the cycle continues.
+
+
+*/
+
+
+var questions = ["How many cups are in a quart?" , "Who was the second president of the United States?" , "How many seconds are in an hour?" , "How many continents are there?" , "Who is on the 5 dollar bill?" , "How many days are in the month of February?" , "What is the element symbol for silver?" , "How long is each quarter of a football game?" , "What is the north most state in the US?" , "At what temperature does water boil (in degrees Celsius)?"];
+
+var answers = ["4 cups" , "John Adams" , "3600 seconds" , "7" , "Abraham Lincoln" , "28 days" , "Ag" , "15 minutes" , "Alaska" , "100 degrees"];
+
+var index = -1;
+
+var score = 0;
+
+
+
+function displayQuestion()
+{
+	index = index + 1;
+	if(index > questions.length - 1)
+        {
+                index = 0;
+        }
+        var answer = document.getElementById("question");
+	answer.value = questions[index];
+
+}
+
+
+
+
+
+function updateScore()
+{
+	var answerT = document.getElementById("answer");
+	var daAnswer = checkAnswer(answerT.value);
+	if(daAnswer == true)
+	{
+		score = score + 1;
+		alert("Correct!");
+	}
+	else
+	{
+		alert("Sorry, but the actual answer is " + answers[index]);
+	}
+}
+
+
+function checkAnswer(ans)
+{
+	var answer = -1;
+	if (ans == answers[index])
+	{
+		answer = true;
+	}
+	else
+	{
+		answer = false;
+	}
+	return answer;
+}
+
+
+
+</script>
+</head>
+<body bgcolor="yellow" > 
+<center>
+<h1>My Quiz</h1>
+<a href="index.html"> Click here to return to my homepage. </a>
+<p>
+	1. To get a question, press the button below.
+	<br/>
+	2. Type in your answer and hit the button to submit.
+	<br/>
+	3. Hit the button again to get a new question
+	<br/>
+
+<br/><br/>
+<table border = 3>
+	<tr>
+		<td>  	<input id="question" type="text" size="70" readonly = true/>	</td>
+	</tr>
+	<tr height = "12"><td></td>
+	</tr>
+	<tr>
+		<td>	<input id="answer" type="text" size="70" onfocusout="updateScore()"/> </td>
+	</tr>
+</table>
+<br/><br/>
+<input type="button" value="Next Question" onclick="displayQuestion()"/>
+</center>
+
+</body>
+</html>
+
+
+
+
