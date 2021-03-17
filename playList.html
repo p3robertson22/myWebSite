@@ -1,0 +1,100 @@
+<html> 
+<head> 
+<script language="JavaScript">
+
+
+// Two dimen
+var songs =[
+			   ["Springsteen", "Land of Hope and Dreams"],
+			   ["Beatles", "Let it Be"],
+			   ["The Who", "Baba O'Reilly"],
+			   ["Rolling Stones", "Start Me Up"]  
+			];
+				   
+		
+var songNum = -1;
+var score = 0
+
+function nextSong()
+{
+	songNum++
+	if( songNum == songs.length)
+	{
+		songNum = 0;
+	}
+	
+	document.getElementById("artist").value = songs[songNum][0];
+	document.getElementById("song").value = songs[songNum][1];
+}
+
+function add()
+{
+	var art = prompt("What is the artist?");
+	var title = prompt("What is the song title?");
+
+	var temp = [art, title];
+
+	songs.push(temp);
+	
+}
+
+function remove()
+{
+	var sTitle = prompt("What song should I delete?");
+	var sIndes = getSong(sTitle);
+	alert(sIndex);
+
+	if (sIndex == -1)
+	{
+		alert("Song not found.");
+	}
+	else
+	{
+		songs.splice( sIndex,  1 );
+	}
+
+	alert(songs.length);
+}
+
+function getSong(s)
+{
+	var index = -1;
+	
+	for( var i = 0; i < songs.length; i++)
+	{
+		alert(songs[i][1]);
+	}
+	if( s == songs[i][1])
+	{
+		index = i;
+	}
+	
+
+	return index;
+}
+
+
+
+</script>
+</head>
+<body > 
+<center>
+<h1> My Playlist</h1>
+<a href="index.html"> Click here to return to my homepage. </a>
+
+<br/><br/>
+
+<input type="button" value = "Next song" onclick="nextSong()"/>
+<br/><br/>
+<input type="text" id="artist" size="50">  <input type="text" id="song" size="50">
+<br/><br/>
+<input type="button" value = "Add a song" onclick="add()"/>
+<input type="button" value = "Remove a song" onclick="remove()"/>
+
+<br/><br/>
+
+</center>
+
+
+</body>
+</html>
