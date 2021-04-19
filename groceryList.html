@@ -1,0 +1,87 @@
+<html> 
+<head> 
+<script language="JavaScript">
+
+
+// Two dimen
+var foods =[
+			   ["Dairy", "Milk"],
+			   ["Cereal", "Frosted Flakes"],
+			   ["Produce", "Strawberries"],
+			   ["Produce", "Broccoli"]  
+	   ];
+				   
+		
+var foodNum = -1;
+var score = 0
+
+function nextFood()
+{
+	foodNum++
+	if( foodNum == foods.length)
+	{
+		foodNum = 0;
+	}
+	//alert(foodNum);
+	document.getElementById("type").value = foods[foodNum][0];
+	document.getElementById("item").value = foods[foodNum][1];
+}
+
+
+function addFood()
+{
+	//alert("Add");
+	var type = prompt("What type of food is this?");
+	var food = prompt("What is the name of the food?");
+
+	var temp = [type, food];
+
+	foods.push(temp);
+	
+}
+
+
+function displayList()
+{
+	var answer = ""
+	for (var i = 0;i < foods.length; i++)
+	{
+		answer = answer + foods[i][1];
+		answer = answer + "<br/>";
+	
+	}
+	//alert(answer);
+
+	document.getElementById("list").innerHTML = answer;
+	document.getElementById("list").style.visibility = "visible";
+}
+
+
+
+</script>
+</head>
+<body bgcolor="yellow" > 
+<center>
+<h1> My Grocery List</h1>
+Directions
+<br/>
+Click add item to add a new item to the grocery list.
+
+<br/><br/>
+<input type="button" value = "Display Grocery List" onclick="displayList()"/>
+
+<input type="button" value = "Next item" onclick="nextFood()"/>
+<br/><br/>
+<input type="text" id="type" size="50">  <input type="text" id="item" size="50">
+<br/><br/>
+<input type="button" value = "Add an item" onclick="addFood()"/>
+<div id = "list" style = "position:absolute; overflow:scroll; top:300; left:525; width:400; height:200; visibility:hidden">
+<br/><br/>
+
+</center>
+
+
+</body>
+</html>
+
+
