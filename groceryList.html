@@ -5,10 +5,12 @@
 
 // Two dimen
 var foods =[
-			   ["Dairy", "Milk"],
-			   ["Cereal", "Frosted Flakes"],
-			   ["Produce", "Strawberries"],
-			   ["Produce", "Broccoli"]  
+			   ["Dairy", "Milk", false],
+			   ["Cereal", "Frosted Flakes", false],
+			   ["Produce", "Strawberries", true],
+			   ["Produce", "Broccoli", true],
+			   ["Candy", "Snickers Bar", false],
+			   ["Deli", "Chicken Breast", true]
 	   ];
 				   
 		
@@ -33,27 +35,43 @@ function addFood()
 	//alert("Add");
 	var type = prompt("What type of food is this?");
 	var food = prompt("What is the name of the food?");
+	var healthy = confirm("Is this a healthy food?");
 
-	var temp = [type, food];
+	var temp = [type, food, healthy];
 
 	foods.push(temp);
 	
 }
 
 
-function displayList()
+function displayList(h)
 {
-	var answer = ""
-	for (var i = 0;i < foods.length; i++)
-	{
-		answer = answer + foods[i][1];
-		answer = answer + "<br/>";
+	var answer = "";
 	
+	if (h == 0)
+	{
+		for (var i = 0;i < foods.length; i++)
+		{
+			answer = answer + foods[i][1];
+			answer = answer + "<br/>";
+	
+		}
 	}
-	//alert(answer);
+	else
+	{
+		for(var i = 0; i < foods.length; i++)
+		{
+			if (foods[i][2] == true)
+			{
+				answer = answer + foods[i][1];
+				answer = answer + "<br/>";
+			}
+		}
+	}
 
 	document.getElementById("list").innerHTML = answer;
 	document.getElementById("list").style.visibility = "visible";
+	
 }
 
 
@@ -65,10 +83,11 @@ function displayList()
 <h1> My Grocery List</h1>
 Directions
 <br/>
-Click add item to add a new item to the grocery list.
+Click "add item" to add a new item to the grocery list.
 
 <br/><br/>
-<input type="button" value = "Display Grocery List" onclick="displayList()"/>
+<input type="button" value = "Display Entire Grocery List" onclick="displayList(0)"/>
+<input type="button" value = "Display Healthy Grocery List" onclick="displayList(1)"/>
 
 <input type="button" value = "Next item" onclick="nextFood()"/>
 <br/><br/>
